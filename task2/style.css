@@ -1,0 +1,78 @@
+*{
+    font-family: Arial;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.back-to-main{
+    display: block;
+    margin: 20px;
+    width: max-content
+}
+
+body{
+    background: #f5f5f5;
+}
+
+.card{
+    max-width: 500px;
+    width: 100%;
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,.1);
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.card .favorite{
+    text-align: right;
+}
+
+.card .favorite a{
+    text-decoration: none;
+}
+
+.card img{
+    width: 100%;
+}
+
+.card h3{
+    margin: 16px 0px;
+    font-size: 20px;
+}
+
+.card .info{
+    line-height: 1.2;
+    margin: 16px 0px;
+}
+
+.card .price{
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.card .old-price{
+    color: #e74c3c;
+    text-decoration: line-through;
+    font-size: 16px;
+}
+
+.card button{
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card button:hover{
+    filter: brightness(0.95);
+}
