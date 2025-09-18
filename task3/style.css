@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+ body{
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+    overflow: hidden;
+ }
+
+ a{
+    color: white;
+}
+
+ .cards{
+    display: flex;
+    height: 100vh;
+    gap: 2px;
+    overflow: hidden;
+ }
+
+.card-1{background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)), url(Image-1.png)}
+
+.card-2{background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)), url(Image-2.png)}
+
+.card-3{background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)), url(Image-3.png)}
+
+.card-4{background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)), url(Image-4.png)}
+
+.card{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    flex: 1;
+    gap: 16px;
+    background-size: cover;
+    background-position: center;
+    transition: 0,5s;
+}
+
+.card:hover{
+    transform: scale(105%);
+    z-index: 1;
+    position: relative;
+}
+
+h3{
+    font-size: 38px;
+    text-transform: uppercase;
+    line-height: 38px;
+}
+
+h4{
+    font-size: 12px;
+    text-transform: capitalize;
+    opacity: 0.7;
+    font-weight: normal;
+}
