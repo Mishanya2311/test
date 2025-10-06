@@ -73,6 +73,22 @@ ul {
     font-size: 1rem;
 }
 
+.burger-btn{
+    background-color: white;
+    padding: 0;
+    border: none;
+    display: none;
+    img{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.burger-btn:hover {
+          img{filter: invert(50%);}
+          cursor: pointer;
+}
+
 .btn--primary {
     background-color: var(--primary-color);
     color: var(--white-color);
@@ -127,11 +143,11 @@ ul {
     z-index: 1000;
 }
 
-.header__inner {
+.nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 20px 0;
+    align-items: center;
 }
 
 .logo {
@@ -146,6 +162,7 @@ ul {
 
 .nav__list {
     display: flex;
+    justify-content: space-between;
     gap: 30px;
     align-items: center;
 }
@@ -193,7 +210,28 @@ ul {
     cursor: pointer;
 }
 
+.btn_nav_lang{
+    border: none;
+    padding: 0 0;
+    background-color: white;
+}
 
+.btn_nav_lang:hover {
+          img{filter: invert(50%);}
+          cursor: pointer;
+}
+
+.btn_lang{
+    display: none;
+    border: none;
+    padding: 0 0;
+    background-color: white;
+}
+
+.btn_lang:hover {
+          img{filter: invert(50%);}
+          cursor: pointer;
+}
 
 .menu-toggle {
     display: none;
@@ -224,7 +262,7 @@ ul {
 }
 
 .master{
-    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0)), url(../images/PSL-banner-209581713_750x560px.webp);
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0)), url(../images/PSL-banner-209581713_2880x1660px.webp);
     background-size: cover;
 }
 
@@ -527,6 +565,18 @@ text-align: center
     
     .about__image {
         order: -1;
+    }
+
+    .burger-btn{
+        display:block;
+    }
+
+    .nav__item{
+        display: none;
+    }
+
+    .btn_lang{
+    display: block;
     }
 }
 
