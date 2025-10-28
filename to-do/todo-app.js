@@ -1,4 +1,5 @@
 (function(){
+    let listArray = []
     //создаём и возвращаем заголовок приложения
     function createAppTitle(title) {
         let appTitle = document.createElement('h2');
@@ -19,10 +20,14 @@
         buttonWrapper.classList.add('input-group-append');
         button.classList.add('btn', 'btn-primary');
         button.textContent = 'Добавить дело';
-        
+        button.disabled = true;
         buttonWrapper.append(button);
         form.append(input);
         form.append(buttonWrapper);
+
+        input.addEventListener('input', function(){
+            if(input.value !=="") {button.disabled = false} else {button.disabled = true}
+        })
 
         //<form class="input-group mb-3"
         //  <input class ="form-control" placeholder="Введите название нового дела">
@@ -45,7 +50,7 @@
         return list;
     }
 
-    function createTodoItem(name) {
+    function createTodoItem(obj) {
          let item = document.createElement('li');
          //кнопки помещаем в элемент, который красиво покажет их в одной группе
          let buttonGroup = document.createElement('div');
@@ -55,15 +60,33 @@
          //устанавлваем стили для элементов списка, а также для размещения кнопок
          //в его правой части с помощью flex
          item.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-         item.textContent = name;
+         item.textContent = obj.name;
  
          buttonGroup.classList.add('btn-group', 'btn-group-sm');
          doneButton.classList.add('btn', 'btn-success');
          doneButton.textContent='Готово';
          deleteButton.classList.add('btn', 'btn-danger');
          deleteButton.textContent='Удалить';
+
+         if(obj.done==true) item.classList.add('list-group-item-success')
+
+         doneButton.addEventListener('click',function(){
+            item.classList.toggle('list-group-item-success')
+            for (const listItem of listArray){
+                if(listItem.id == obj.id) listItem.done = !listItem.done;
+            }
+         });
+         deleteButton.addEventListener('click',function(){
+             if(confirm('Вы уверены?')){
+                 item.remove();
+             }
+            for (let i=0; i<listArray.length; i++){
+                if(listItem.id == obj.id) listArray.splice(i,1)
+            }
+            console.log(listArray)
+         });
  
-         //вкладываем кнопки в отдельный элемент, чтобы они объединились в один блок
+        //вкладываем кнопки в отдельный элемент, чтобы они объединились в один блок
          buttonGroup.append(doneButton);
          buttonGroup.append(deleteButton);
          item.append(buttonGroup);
@@ -75,6 +98,14 @@
              deleteButton,
          };
     };
+
+    function getNewID(arr){
+        let max = 0;
+        for (const item of arr) {
+            if(item.id>max) max = item.id
+        };
+        return max+1;
+    }
 
     function createTodoApp(container,title = 'Список дел'){
         let todoAppTitle = createAppTitle(title);
@@ -96,22 +127,28 @@
                 return;
             };
             
-            let todoItem = createTodoItem(todoItemForm.input.value);
-
             //создаём и добавляем в список новое дело с названием из поля для ввода
+                let newItem = {
+                id: getNewID(listArray),
+                name: todoItemForm.input.value,
+                done: false
+            }
+
+            let todoItem = createTodoItem(newItem);
+
+          
+
+            listArray.push(newItem);
+
+            console.log(listArray);
+
             todoList.append(todoItem.item);
+
+            todoItemForm.button.disabled=true;
 
             //обнуляем значение в поле, чтобы не пришлось стирать его вручную
             todoItemForm.input.value = '';
 
-            todoItem.doneButton.addEventListener('click',function(){
-                todoItem.item.classList.toggle('list-group-item-success')
-            });
-            todoItem.deleteButton.addEventListener('click',function(){
-                if(confirm('Вы уверены?')){
-                    todoItem.item.remove();
-                }
-            });
         });
     }
     window.createTodoApp = createTodoApp;
